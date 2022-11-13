@@ -16,6 +16,15 @@ def printboard(xstop,ystop):
     print("--|---|---|")
     print(f"{six} | {seven} | {eight} |")
 
+def checkwin(xstop,ystop):
+    wins = [[0,1,2],[1,4,7],[2,5,8],[0,4,8],[2,4,6],[0,3,6],[1,4,7],[2,5,8]]
+    for win in wins:
+        if (sum(xstop[win[0]],xstop[win[1]],xstop[win[2]]) ==  3):
+            print('X has won the match')
+            return 1
+        if (sum(ystop[win[0]],ystop[win[1]],ystop[win[2]]) ==  3):
+            print('Y has won the match')
+            return 0
 if __name__== "__main__":
     xstop=[0,0,0,0,0,0,0,0,0] #here we are defining all the values for xstop and ystop
     ystop=[0,0,0,0,0,0,0,0,0]
@@ -32,6 +41,10 @@ if __name__== "__main__":
             print("Y'chance")
             value =int(input("please enter a valid value"))
             ystop[value]=1
+       
+        winner=checkwin(xstop,ystop)  
+        if winner != 1:
+                break
         turn=1-turn
         
         #CONTINUE HARRY VIDEO FROM 14:00

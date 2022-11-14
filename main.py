@@ -1,3 +1,6 @@
+def sum(a,b,c):
+    return a+b+c
+
 def printboard(xstop,ystop):
     zero= "X" if xstop[0] else ("O" if ystop[0] else 0) #this is used to replace the input values with X and and O when 
     one= "X" if xstop[1] else ("O" if ystop[1] else 1)  ##when they are being assigned
@@ -10,14 +13,14 @@ def printboard(xstop,ystop):
     eight= "X" if xstop[8] else ("O" if ystop[8] else 8) 
     
      
-    print(f"{zero} | {one} | {two} |")    #here we are definig the basic board design with the positions defined with the numbers
+    print(f"{zero} | {one} | {two} ")    #here we are definig the basic board design with the positions defined with the numbers
     print("--|---|---|")
-    print(f"{three} | {four} | {five} |")
+    print(f"{three} | {four} | {five} ")
     print("--|---|---|")
-    print(f"{six} | {seven} | {eight} |")
+    print(f"{six} | {seven} | {eight} ")
 
 def checkwin(xstop,ystop):
-    wins = [[0,1,2],[1,4,7],[2,5,8],[0,4,8],[2,4,6],[0,3,6],[1,4,7],[2,5,8]]
+    wins = [[0,1,2],[1,4,7],[2,5,8],[0,4,8],[2,4,6],[0,3,6],[1,4,7],[2,5,8]] #here it is defined for all the possible comibinations the winner is selected
     for win in wins:
         if (sum(xstop[win[0]],xstop[win[1]],xstop[win[2]]) ==  3):
             print('X has won the match')
@@ -25,6 +28,7 @@ def checkwin(xstop,ystop):
         if (sum(ystop[win[0]],ystop[win[1]],ystop[win[2]]) ==  3):
             print('Y has won the match')
             return 0
+    return -1
 if __name__== "__main__":
     xstop=[0,0,0,0,0,0,0,0,0] #here we are defining all the values for xstop and ystop
     ystop=[0,0,0,0,0,0,0,0,0]
@@ -43,8 +47,9 @@ if __name__== "__main__":
             ystop[value]=1
        
         winner=checkwin(xstop,ystop)  
-        if winner != 1:
-                break
+        if (winner != -1):
+            print('match is over')
+            break
         turn=1-turn
         
         #CONTINUE HARRY VIDEO FROM 14:00
